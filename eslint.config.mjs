@@ -1,5 +1,6 @@
 import { FlatCompat } from '@eslint/eslintrc'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
+import tsParser from '@typescript-eslint/parser'
 import importHelpers from 'eslint-plugin-import-helpers'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -28,6 +29,25 @@ const eslintConfig = [
       'import-helpers': importHelpers,
       '@typescript-eslint': typescriptEslint
     },
+
+    languageOptions: {
+      // globals: {
+      //   ...globals.browser,
+      //   ...globals.jest,
+      //   ...globals.node
+      // },
+
+      parser: tsParser
+      // ecmaVersion: 11,
+      // sourceType: 'module',
+
+      // parserOptions: {
+      //   ecmaFeatures: {
+      //     jsx: true
+      //   }
+      // }
+    },
+
     rules: {
       'newline-before-return': 2,
       'react/prop-types': 0,
@@ -42,19 +62,25 @@ const eslintConfig = [
             ignoreCase: true
           }
         }
+      ],
+      'prettier/prettier': [
+        'error',
+        {
+          endOfLine: 'auto'
+        }
       ]
       // '@typescript-eslint/no-unused-vars': [
       //   2,
       //   {
-      //     argsIgnorePattern: '^_',
-      //   },
+      //     argsIgnorePattern: '^_'
+      //   }
       // ],
       // 'no-console': [
       //   2,
       //   {
-      //     allow: ['warn', 'error'],
-      //   },
-      // ],
+      //     allow: ['warn', 'error']
+      //   }
+      // ]
     }
   }
 ]
