@@ -52,6 +52,16 @@ export async function GET(request: NextRequest, { params }: Params): Promise<Rou
   )
 }
 
+/**
+ * Handles PUT requests to update a comment in the database.
+ *
+ * @param {NextRequest} request - The incoming request object.
+ * @param {Params} params - The route parameters.
+ * @returns {Promise<RouteResponse>} - A promise that resolves to a RouteResponse containing the updated comment.
+ *
+ * The function expects the following route parameters:
+ * - `id`: The ID of the comment to update.
+ */
 export async function PUT(req: NextRequest, { params }: Params): Promise<RouteResponse> {
   const id = (await params).id
   const commentReq = (await req.json()) as CommentInsert
