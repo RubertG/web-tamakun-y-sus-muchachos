@@ -1,4 +1,6 @@
 import { RouteResponse } from '@/modules/core/interfaces/api/api'
+import { CommentInsert } from '@/modules/core/interfaces/db/db'
+import { CommentInsertSchema } from '@/modules/core/schemas/api/comment'
 import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
 import { NextResponse, NextRequest } from 'next/server'
 
@@ -47,6 +49,32 @@ export async function GET(request: NextRequest, { params }: Params): Promise<Rou
       data: data[0]
     },
     { status: 200 }
+  )
+}
+
+export async function PUT(req: NextRequest, { params }: Params): Promise<RouteResponse> {
+  const id = (await params).id
+  const commentReq = (await req.json()) as CommentInsert
+  const commentParse = CommentInsertSchema.safeParse(commentReq)
+
+  if (!commentParse.success) {
+    return NextResponse.json(
+      {
+        message: 'Comentario no válido',
+        errors: commentParse.error.errors
+      },
+      { status: 400 }
+    )
+  }
+
+  const supabase = await createClientServer()
+  const { error } = await supabase.from('comments').update(commentReq).eq('id', id)
+
+  return NextResponse.json(
+    {
+      message: error ? 'No se pudo actualizar el comentario' : 'Comentario actualizado con éxito'
+    },
+    { status: error ? 500 : 200 }
   )
 }
 
