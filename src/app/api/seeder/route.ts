@@ -51,7 +51,8 @@ const fakeComments: CommentInsert[] = [
   {
     id: '00858aa0-3dbc-4c6a-a440-79d7ade433c2',
     comment: 'Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
-    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e2'
+    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e2',
+    approved: true
   },
   {
     id: '00858aa0-3dbc-4c6a-a440-79d7ade433c3',
@@ -83,20 +84,6 @@ const fakeComments: CommentInsert[] = [
 // This route is used to seed the database with data for development purposes
 export async function GET() {
   const supabase = await createClientServer()
-
-  // Delete all rows from the database tables
-  const usersIds = fakeUsers.map((user) => user.id || '')
-  const { error } = await supabase.from('users').delete().in('id', usersIds)
-
-  if (error) {
-    return NextResponse.json(
-      {
-        message: 'Ocurrió un error al eliminar las filas de la tabla User',
-        error
-      },
-      { status: 500 }
-    )
-  }
 
   // Insert new user rows into the database table
   const { error: insertError } = await supabase.from('users').insert(fakeUsers)
