@@ -1,6 +1,7 @@
 import { COMMENTS_SIZE } from '@/modules/core/const/comments'
 import { RouteResponse } from '@/modules/core/interfaces/api/api'
-import { Comment } from '@/modules/core/interfaces/db/db'
+import { Comment, CommentInsert } from '@/modules/core/interfaces/db/db'
+import { CommentInsertSchema } from '@/modules/core/schemas/api/comment'
 import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
 import { type NextRequest, NextResponse } from 'next/server'
 
@@ -33,7 +34,7 @@ export async function GET(request: NextRequest): Promise<RouteResponse<Comment[]
   } catch (error) {
     return NextResponse.json(
       {
-        message: 'Error: Invalid query params',
+        message: 'Parámetros de consulta no válidos',
         error
       },
       { status: 400 }
@@ -64,7 +65,7 @@ export async function GET(request: NextRequest): Promise<RouteResponse<Comment[]
   if (error) {
     return NextResponse.json(
       {
-        message: 'Error: No se pudieron obtener los comentarios',
+        message: 'No se pudieron obtener los comentarios',
         error
       },
       { status: 500 }
@@ -77,5 +78,34 @@ export async function GET(request: NextRequest): Promise<RouteResponse<Comment[]
       data
     },
     { status: 200 }
+  )
+}
+
+export async function POST(req: Request): Promise<RouteResponse> {
+  const commentReq = (await req.json()) as CommentInsert
+
+  // Validate comment
+  const parseResult = CommentInsertSchema.safeParse(commentReq)
+
+  if (!parseResult.success) {
+    return NextResponse.json(
+      {
+        message: 'Comentario no válido',
+        errors: parseResult.error.errors
+      },
+      { status: 400 }
+    )
+  }
+
+  const supabase = await createClientServer()
+
+  const { status, error } = await supabase.from('comments').upsert(commentReq)
+
+  return NextResponse.json(
+    {
+      message: error ? 'No se pudo insertar el comentario' : 'Comentario agregado con éxito',
+      error
+    },
+    { status }
   )
 }
