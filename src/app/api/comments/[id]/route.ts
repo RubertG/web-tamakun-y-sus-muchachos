@@ -1,0 +1,84 @@
+import { RouteResponse } from '@/modules/core/interfaces/api/api'
+import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
+import { NextResponse, NextRequest } from 'next/server'
+
+interface Params {
+  params: Promise<{ id: string }>
+}
+/**
+ * Handles GET requests to retrieve a comment from the database.
+ *
+ * @param {NextRequest} request - The incoming request object.
+ * @param {Params} params - The route parameters.
+ * @returns {Promise<RouteResponse>} - A promise that resolves to a RouteResponse containing the comment.
+
+ * The function expects the following route parameters:
+ * - `id`: The ID of the comment to retrieve.
+*/
+export async function GET(request: NextRequest, { params }: Params): Promise<RouteResponse> {
+  const id = (await params).id
+
+  const supabase = await createClientServer()
+  const { data, error } = await supabase.from('comments').select('*').eq('id', id)
+
+  if (error) {
+    return NextResponse.json(
+      {
+        message: 'No se pudo obtener el comentario',
+        error
+      },
+      { status: 500 }
+    )
+  }
+
+  if (data.length === 0) {
+    return NextResponse.json(
+      {
+        message: 'Comentario no encontrado',
+        error: 'No se encontró el comentario con el id proporcionado'
+      },
+      { status: 404 }
+    )
+  }
+
+  return NextResponse.json(
+    {
+      message: 'Comentario obtenido con éxito',
+      data: data[0]
+    },
+    { status: 200 }
+  )
+}
+
+/**
+ * Handles PUT requests to update a comment in the database.
+ *
+ * @param {NextRequest} request - The incoming request object.
+ * @param {Params} params - The route parameters.
+ * @returns {Promise<RouteResponse>} - A promise that resolves to a RouteResponse containing the updated comment.
+ * The function expects the following route parameters:
+ * - `id`: The ID of the comment to update.
+ */
+export async function DELETE(req: NextRequest, { params }: Params): Promise<RouteResponse> {
+  const id = (await params).id
+
+  const supabase = await createClientServer()
+  const { error } = await supabase.from('comments').delete().eq('id', id)
+
+  if (error) {
+    return NextResponse.json(
+      {
+        message: 'No se pudo eliminar el comentario',
+        error
+      },
+      { status: 500 }
+    )
+  }
+
+  return NextResponse.json(
+    {
+      message: 'Comentario eliminado con éxito'
+    },
+    { status: 200 }
+  )
+}
