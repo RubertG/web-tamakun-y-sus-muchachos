@@ -56,23 +56,27 @@ const fakeComments: CommentInsert[] = [
   {
     id: '00858aa0-3dbc-4c6a-a440-79d7ade433c3',
     comment: 'Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.',
-    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e3'
+    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e3',
+    approved: false
   },
   {
     id: '00858aa0-3dbc-4c6a-a440-79d7ade433c4',
     comment: 'Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.',
-    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e4'
+    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e4',
+    approved: false
   },
   {
     id: '00858aa0-3dbc-4c6a-a440-79d7ade433c5',
     comment: 'Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo.',
-    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e5'
+    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e5',
+    approved: false
   },
   {
     id: '00858aa0-3dbc-4c6a-a440-79d7ade433c6',
     comment:
       'Nulla sit amet est. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.',
-    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e1'
+    user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e1',
+    approved: false
   }
 ]
 
@@ -85,11 +89,10 @@ export async function GET() {
   const { error } = await supabase.from('users').delete().in('id', usersIds)
 
   if (error) {
-    console.log(error)
-
     return NextResponse.json(
       {
-        message: 'Ocurrió un error al eliminar las filas de la tabla User'
+        message: 'Ocurrió un error al eliminar las filas de la tabla User',
+        error
       },
       { status: 500 }
     )
@@ -99,11 +102,10 @@ export async function GET() {
   const { error: insertError } = await supabase.from('users').insert(fakeUsers)
 
   if (insertError) {
-    console.log(insertError)
-
     return NextResponse.json(
       {
-        message: 'Ocurrió un error al insertar las filas de la tabla User'
+        message: 'Ocurrió un error al insertar las filas de la tabla User',
+        error: insertError
       },
       { status: 500 }
     )
@@ -113,11 +115,10 @@ export async function GET() {
   const { error: insertCommentError } = await supabase.from('comments').insert(fakeComments)
 
   if (insertCommentError) {
-    console.log(insertCommentError)
-
     return NextResponse.json(
       {
-        message: 'Ocurrió un error al insertar las filas de la tabla Comment'
+        message: 'Ocurrió un error al insertar las filas de la tabla Comment',
+        error: insertCommentError
       },
       { status: 500 }
     )
