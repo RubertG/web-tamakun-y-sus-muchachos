@@ -1,14 +1,26 @@
 import { COMMENTS_SIZE } from '@/modules/core/const/comments'
+import { RouteResponse } from '@/modules/core/interfaces/api/api'
+import { Comment } from '@/modules/core/interfaces/db/db'
 import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
 import { type NextRequest, NextResponse } from 'next/server'
 
-/*
- GET /api/comments
- @param {Request} request
- @returns {Response}
- @description Get all comments
+/**
+  Handles GET requests to retrieve comments from the database.
+ 
+  @param {NextRequest} request - The incoming request object.
+  @returns {Promise<RouteResponse<Comment[]>>} - A promise that resolves to a RouteResponse containing an array of comments.
+ 
+  The function processes the following query parameters:
+  - `start` (optional): The starting index for pagination. Defaults to 0 if not provided.
+  - `end` (optional): The ending index for pagination. Defaults to COMMENTS_SIZE if not provided.
+  - `areActives` (optional): A boolean indicating whether to filter comments by their approval status. If not provided, all comments are retrieved.
+ 
+  Possible response statuses:
+  - 200: Comments retrieved successfully.
+  - 400: Invalid query parameters.
+  - 500: Failed to retrieve comments from the database.
 */
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest): Promise<RouteResponse<Comment[]>> {
   // Get query params
   let start: number, end: number
   let areActives: boolean | null
@@ -27,13 +39,27 @@ export async function GET(request: NextRequest) {
       { status: 400 }
     )
   }
-  console.log({ start, end, areActives })
+
+  let data = null
+  let error = null
   const supabase = await createClientServer()
-  const { data, error } = await supabase
-    .from('comments')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .range(start, 2)
+
+  if (areActives !== null) {
+    const res = await supabase
+      .from('comments')
+      .select('*')
+      .eq('approved', areActives)
+      .order('created_at', { ascending: false })
+      .range(start, end)
+
+    data = res.data
+    error = res.error
+  } else {
+    const res = await supabase.from('comments').select('*').order('created_at', { ascending: false }).range(start, end)
+
+    data = res.data
+    error = res.error
+  }
 
   if (error) {
     return NextResponse.json(
