@@ -81,7 +81,13 @@ export async function GET(request: NextRequest): Promise<RouteResponse<Comment[]
   )
 }
 
-export async function POST(req: Request): Promise<RouteResponse> {
+/*
+  Handles the POST request to insert a new comment.
+ 
+  @param {} req - The incoming Next.js request object.
+  @returns A promise that resolves to a RouteResponse object.
+*/
+export async function POST(req: NextRequest): Promise<RouteResponse> {
   const commentReq = (await req.json()) as CommentInsert
 
   // Validate comment
