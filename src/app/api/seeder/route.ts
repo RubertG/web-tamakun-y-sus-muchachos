@@ -89,7 +89,7 @@ export async function GET() {
 
     return NextResponse.json(
       {
-        message: 'An error occurred while deleting the rows'
+        message: 'Ocurrió un error al eliminar las filas de la tabla User'
       },
       { status: 500 }
     )
@@ -103,7 +103,7 @@ export async function GET() {
 
     return NextResponse.json(
       {
-        message: 'An error occurred while inserting the User table rows'
+        message: 'Ocurrió un error al insertar las filas de la tabla User'
       },
       { status: 500 }
     )
@@ -117,13 +117,13 @@ export async function GET() {
 
     return NextResponse.json(
       {
-        message: 'An error occurred while inserting the Comment table rows'
+        message: 'Ocurrió un error al insertar las filas de la tabla Comment'
       },
       { status: 500 }
     )
   }
 
   return NextResponse.json({
-    message: 'The database has been seeded with data'
+    message: 'Datos insertados con éxito'
   })
 }
