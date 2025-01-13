@@ -1,6 +1,6 @@
-import { COMMENTS_SIZE } from '@/modules/core/const/comments'
 import { RouteResponse } from '@/modules/core/interfaces/api/api'
 import { Comment, CommentInsert } from '@/modules/core/interfaces/db/db'
+import { COMMENTS_SIZE } from '@/modules/core/lib/const/comments'
 import { CommentInsertSchema } from '@/modules/core/schemas/api/comment'
 import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
 import { type NextRequest, NextResponse } from 'next/server'
