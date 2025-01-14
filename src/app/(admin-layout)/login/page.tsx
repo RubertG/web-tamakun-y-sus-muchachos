@@ -1,3 +1,32 @@
-export default function LoginPage() {
-  return <div>Página de login</div>
+import { LogoutButton } from '@/modules/core/components/logout-button'
+import SignInWithGoogleButton from '@/modules/core/components/sign-in-with-google-button'
+import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
+import { redirect } from 'next/navigation'
+
+export default async function LoginPage() {
+  const supabase = await createClientServer()
+  const {
+    data: { user },
+    error
+  } = await supabase.auth.getUser()
+
+  if (error) {
+    redirect('/error')
+  }
+
+  return (
+    <form className="flex h-screen flex-col items-center justify-center space-y-4">
+      <h1>Ingresar</h1>
+
+      {user ? (
+        <div>
+          <LogoutButton />
+        </div>
+      ) : (
+        <div>
+          <SignInWithGoogleButton />
+        </div>
+      )}
+    </form>
+  )
 }
