@@ -1,4 +1,4 @@
-import { RouteResponse } from '@/modules/core/interfaces/api/api'
+import { CommentResponse, RouteResponse } from '@/modules/core/interfaces/api/api'
 import { CommentInsert } from '@/modules/core/interfaces/db/db'
 import { CommentInsertSchema } from '@/modules/core/schemas/api/comment'
 import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
@@ -17,13 +17,13 @@ interface Params {
  * The function expects the following route parameters:
  * - `id`: The ID of the comment to retrieve.
 */
-export async function GET(request: NextRequest, { params }: Params): Promise<RouteResponse> {
+export async function GET(request: NextRequest, { params }: Params): Promise<RouteResponse<CommentResponse>> {
   const id = (await params).id
 
   const supabase = await createClientServer()
   const { data, error } = await supabase.from('comments').select('*').eq('id', id)
 
-  if (error) {
+  if (error || !data) {
     return NextResponse.json(
       {
         message: 'No se pudo obtener el comentario',
@@ -43,10 +43,17 @@ export async function GET(request: NextRequest, { params }: Params): Promise<Rou
     )
   }
 
+  const { data: users } = await supabase.from('users').select('*').eq('id', data[0].user_id)
+  const user = users?.[0]
+
   return NextResponse.json(
     {
       message: 'Comentario obtenido con éxito',
-      data: data[0]
+      data: {
+        ...data[0],
+        user_name: user?.name || 'Usuario desconocido',
+        profile_picture: user?.profile_picture || ''
+      }
     },
     { status: 200 }
   )

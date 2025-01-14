@@ -1,5 +1,5 @@
-import { RouteResponse } from '@/modules/core/interfaces/api/api'
-import { Comment, CommentInsert } from '@/modules/core/interfaces/db/db'
+import { CommentResponse, RouteResponse } from '@/modules/core/interfaces/api/api'
+import { CommentInsert } from '@/modules/core/interfaces/db/db'
 import { CommentInsertSchema } from '@/modules/core/schemas/api/comment'
 import { COMMENTS_SIZE } from '@/modules/core/utils/const/comments'
 import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
@@ -9,7 +9,7 @@ import { type NextRequest, NextResponse } from 'next/server'
   Handles GET requests to retrieve comments from the database.
  
   @param {NextRequest} request - The incoming request object.
-  @returns {Promise<RouteResponse<Comment[]>>} - A promise that resolves to a RouteResponse containing an array of comments.
+  @returns {Promise<RouteResponse<CommentResponse[]>>} - A promise that resolves to a RouteResponse containing an array of comments.
  
   The function processes the following query parameters:
   - `start` (optional): The starting index for pagination. Defaults to 0 if not provided.
@@ -21,7 +21,7 @@ import { type NextRequest, NextResponse } from 'next/server'
   - 400: Invalid query parameters.
   - 500: Failed to retrieve comments from the database.
 */
-export async function GET(request: NextRequest): Promise<RouteResponse<Comment[]>> {
+export async function GET(request: NextRequest): Promise<RouteResponse<CommentResponse[]>> {
   // Get query params
   let start: number, end: number
   let areActives: boolean | null
@@ -62,7 +62,7 @@ export async function GET(request: NextRequest): Promise<RouteResponse<Comment[]
     error = res.error
   }
 
-  if (error) {
+  if (error || !data) {
     return NextResponse.json(
       {
         message: 'No se pudieron obtener los comentarios',
@@ -72,10 +72,23 @@ export async function GET(request: NextRequest): Promise<RouteResponse<Comment[]
     )
   }
 
+  const comments = await Promise.all(
+    data.map(async (comment) => {
+      const { data, error } = await supabase.from('users').select('*').eq('id', comment.user_id)
+      const user = data?.[0]
+
+      return {
+        ...comment,
+        user_name: user?.name && !error ? user.name : 'Usuario desconocido',
+        profile_picture: user?.profile_picture && !error ? user.profile_picture : ''
+      }
+    })
+  )
+
   return NextResponse.json(
     {
       message: 'Comentarios obtenidos con éxito',
-      data
+      data: comments
     },
     { status: 200 }
   )
