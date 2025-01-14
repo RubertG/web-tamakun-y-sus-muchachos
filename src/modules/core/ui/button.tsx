@@ -34,12 +34,16 @@ const Button = ({ children, className, variant, size, ...props }: Props) => {
 
   if (variant === 'secondary' || variant === 'ghost') {
     return (
-      <div
-        className={clsx('inline h-fit w-fit rounded-[10px] p-[1px] transition-all', {
-          'bg-gradient-primary hover:shadow-button-secondary': variant === 'secondary',
-          'hover:bg-gradient-primary': variant === 'ghost'
-        })}
-      >
+      <div className="group relative h-fit w-fit">
+        <div
+          className={clsx(
+            'absolute -left-[1px] -top-[1px] -z-10 inline-block h-[calc(100%+2px)] w-[calc(100%+2px)] rounded-[10px] border-solid transition-all',
+            {
+              'bg-gradient-primary group-hover:shadow-button-secondary': variant === 'secondary',
+              'bg-gradient-primary opacity-0 group-hover:opacity-100': variant === 'ghost'
+            }
+          )}
+        />
         <button className={classNames} {...props}>
           {children}
         </button>
