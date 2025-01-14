@@ -1,5 +1,5 @@
-import { LogoutButton } from '@/modules/core/components/logout-button'
-import SignInWithGoogleButton from '@/modules/core/components/sign-in-with-google-button'
+import { LogoutButton } from '@/modules/core/components/auth/logout-button'
+import SignInWithGoogleButton from '@/modules/core/components/auth/sign-in-with-google-button'
 import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
 import { redirect } from 'next/navigation'
 

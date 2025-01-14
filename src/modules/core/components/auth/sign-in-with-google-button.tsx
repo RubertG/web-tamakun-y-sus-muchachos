@@ -3,7 +3,7 @@
 // import { useRouter } from 'next/navigation'
 import React from 'react'
 
-import { signInWithGoogle } from '../actions/login'
+import { signInWithGoogle } from '../../actions/login'
 
 const SignInWithGoogleButton = () => {
   // const router = useRouter()

@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { signout } from '../actions/login'
+import { signout } from '../../actions/login'
 
 function LogoutButton() {
   return (
