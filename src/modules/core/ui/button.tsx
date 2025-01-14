@@ -34,7 +34,7 @@ const Button = ({ children, className, variant, size, ...props }: Props) => {
 
   if (variant === 'secondary' || variant === 'ghost') {
     return (
-      <div className="group relative h-fit w-fit">
+      <div className="group relative z-10 h-fit w-fit">
         <div
           className={clsx(
             'absolute -left-[1px] -top-[1px] -z-10 inline-block h-[calc(100%+2px)] w-[calc(100%+2px)] rounded-[10px] border-solid transition-all',
