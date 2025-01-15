@@ -18,7 +18,7 @@ const Comment = ({ className, user: { profile_picture, user_name, created_at, co
 
   return (
     <div className={`group relative z-10 w-full max-w-sm rounded-[10px] border border-border-default ${className}`}>
-      <div className="bg-gradient-primary absolute -left-[1px] -top-[1px] -z-10 inline-block h-[calc(100%+2px)] w-[calc(100%+2px)] rounded-[10px] border-solid opacity-0 transition-all group-hover:opacity-100" />
+      <div className="absolute -left-[1px] -top-[1px] -z-10 inline-block h-[calc(100%+2px)] w-[calc(100%+2px)] rounded-[10px] border-solid bg-gradient-primary opacity-0 transition-all group-hover:opacity-100" />
 
       <div className="rounded-[10px] bg-bg-dark p-6">
         <header className="flex items-center gap-4 overflow-hidden">
