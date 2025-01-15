@@ -5,17 +5,19 @@ import { NavLinkType } from '../../interfaces/nav/nav'
 
 interface Props extends NavLinkType {
   children?: React.ReactNode
+  className?: string
   isActive?: boolean
 }
 
-const NavItem = ({ children, path, label, isActive }: Props) => {
+const NavItem = ({ children, path, label, isActive, className }: Props) => {
   return (
     <Link
       className={clsx(
-        'group relative z-10 inline-flex h-fit w-fit font-medium text-text-secondary transition-colors hover:text-primary-200',
+        'group relative z-10 inline-flex h-fit w-fit text-[55px] font-extrabold text-text-secondary md:text-base md:font-medium md:transition-colors md:hover:text-primary-200',
         {
           'text-primary-200': isActive
-        }
+        },
+        className
       )}
       href={path}
     >
