@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     }
   ],
   openGraph: {
-    title: 'Tamakún y sus muchachos',
+    title: 'Tamakún y sus muchachos - Sitio web oficial',
     images: [
       {
         url: `${env.NEXT_PUBLIC_DOMAIN}/logo.webp`,
