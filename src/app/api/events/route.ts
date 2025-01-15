@@ -12,7 +12,7 @@ export async function GET(request: NextRequest): Promise<RouteResponse<Event[]>>
 
     return NextResponse.json(
       {
-        message: 'Hello World',
+        message: 'Eventos obtenidos exitosamente',
         data: events
       },
       { status: 200 }
