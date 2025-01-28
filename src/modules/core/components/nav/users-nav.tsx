@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 import { NavLinkType } from '../../interfaces/nav/nav'
 import { Button } from '../../ui/button'
+import { LastComponentInMobile } from './last-component-in-mobile'
 import { Nav } from './nav'
-import { NavItem } from './nav-item'
 
 const NavItems: NavLinkType[] = [
   {
@@ -29,10 +29,9 @@ const UsersNav = () => {
     <Nav
       items={NavItems}
       lastComponentInMobile={
-        <NavItem
-          label="contacto"
+        <LastComponentInMobile
           path="/contacto"
-          className="text-gradient-primary"
+          label="Contacto"
         />
       }
       lastComponentInDesktop={
