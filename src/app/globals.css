@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  font-family: 'Poppins', sans-serif;
+}
+
 .text-gradient-primary {
   @apply bg-gradient-text;
   background-position: center;
