@@ -13,7 +13,7 @@ const NavItem = ({ children, path, label, isActive, className }: Props) => {
   return (
     <Link
       className={clsx(
-        'group relative z-10 inline-flex h-fit w-fit text-[55px] font-extrabold text-text-secondary md:text-base md:font-medium md:transition-colors md:hover:text-primary-200',
+        'group relative z-10 inline-flex h-fit w-full text-[55px] font-extrabold text-text-secondary md:w-fit md:text-base md:font-medium md:transition-colors md:hover:text-primary-200',
         {
           'text-primary-200': isActive
         },
