@@ -35,8 +35,15 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl)
   }
 
-  if (pathname.startsWith('/api') && request.method !== 'GET' && !session) {
-    return NextResponse.json({ message: 'No autorizado' }, { status: 401 })
+  if (
+    pathname.startsWith('/api') &&
+    request.method !== 'GET' &&
+    !session
+  ) {
+    return NextResponse.json(
+      { message: 'No autorizado' },
+      { status: 401 }
+    )
   }
 
   return supabaseResponse

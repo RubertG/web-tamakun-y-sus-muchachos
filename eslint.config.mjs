@@ -14,7 +14,13 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   {
-    ignores: ['**/node_modules/*', '**/out/*', '**/.next/*', '**/coverage', 'src/app/globals.css']
+    ignores: [
+      '**/node_modules/*',
+      '**/out/*',
+      '**/.next/*',
+      '**/coverage',
+      'src/app/globals.css'
+    ]
   },
   ...compat.extends(
     'next/core-web-vitals',
@@ -56,7 +62,13 @@ const eslintConfig = [
         'warn',
         {
           newlinesBetween: 'always',
-          groups: [['/^next/', 'module'], '/^@/styles/', '/^@/components/', '/^@/lib/', ['parent', 'sibling', 'index']],
+          groups: [
+            ['/^next/', 'module'],
+            '/^@/styles/',
+            '/^@/components/',
+            '/^@/lib/',
+            ['parent', 'sibling', 'index']
+          ],
           alphabetize: {
             order: 'asc',
             ignoreCase: true
@@ -68,19 +80,19 @@ const eslintConfig = [
         {
           endOfLine: 'auto'
         }
+      ],
+      '@typescript-eslint/no-unused-vars': [
+        2,
+        {
+          argsIgnorePattern: '^_'
+        }
+      ],
+      'no-console': [
+        2,
+        {
+          allow: ['warn', 'error']
+        }
       ]
-      // '@typescript-eslint/no-unused-vars': [
-      //   2,
-      //   {
-      //     argsIgnorePattern: '^_'
-      //   }
-      // ],
-      // 'no-console': [
-      //   2,
-      //   {
-      //     allow: ['warn', 'error']
-      //   }
-      // ]
     }
   }
 ]

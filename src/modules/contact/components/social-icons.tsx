@@ -2,7 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const SocialIcons = () => {
-  const whatsappMessage = 'Hola, me gustaría obtener más información de su agrupación musical.'
+  const whatsappMessage =
+    'Hola, me gustaría obtener más información de su agrupación musical.'
   const whatsappNumber = '3112005489'
 
   return (
@@ -12,19 +13,56 @@ const SocialIcons = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image src="/assets/whatsapp.svg" width={50} height={50} quality={100} alt="WhatsApp" />
+        <Image
+          src="/assets/whatsapp.svg"
+          width={50}
+          height={50}
+          quality={100}
+          alt="WhatsApp"
+        />
       </Link>
 
-      <Link href="https://www.instagram.com/tamakun_y_sus_muchachos/" target="_blank" rel="noopener noreferrer">
-        <Image src="/assets/instagram.svg" width={50} height={50} quality={100} alt="WhatsApp" className="!size-7" />
+      <Link
+        href="https://www.instagram.com/tamakun_y_sus_muchachos/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src="/assets/instagram.svg"
+          width={50}
+          height={50}
+          quality={100}
+          alt="WhatsApp"
+          className="!size-7"
+        />
       </Link>
 
-      <Link href="https://www.tiktok.com/@tamakun.music" target="_blank" rel="noopener noreferrer">
-        <Image src="/assets/tiktok.svg" width={50} height={50} quality={100} alt="WhatsApp" />
+      <Link
+        href="https://www.tiktok.com/@tamakun.music"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src="/assets/tiktok.svg"
+          width={50}
+          height={50}
+          quality={100}
+          alt="WhatsApp"
+        />
       </Link>
 
-      <Link href="https://www.facebook.com/profile.php?id=100076514251225" target="_blank" rel="noopener noreferrer">
-        <Image src="/assets/facebook.svg" width={50} height={50} quality={100} alt="WhatsApp" />
+      <Link
+        href="https://www.facebook.com/profile.php?id=100076514251225"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src="/assets/facebook.svg"
+          width={50}
+          height={50}
+          quality={100}
+          alt="WhatsApp"
+        />
       </Link>
     </section>
   )

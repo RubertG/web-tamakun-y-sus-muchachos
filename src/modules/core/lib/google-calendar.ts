@@ -6,7 +6,9 @@ import { env } from './env'
 
 const calendar = google.calendar('v3')
 
-export const getEvents = async (maxResults: number = EVENTS_LIMIT): Promise<Event[]> => {
+export const getEvents = async (
+  maxResults: number = EVENTS_LIMIT
+): Promise<Event[]> => {
   const calendarId = env.GOOGLE_CALENDAR_ID
   const apiKey = env.GOOGLE_API_KEY
 
@@ -24,7 +26,8 @@ export const getEvents = async (maxResults: number = EVENTS_LIMIT): Promise<Even
   return items.map((event) => ({
     id: event.id || '',
     title: event.summary || 'Sin título',
-    description: event.location || 'Lugar reservado por el cliente',
+    description:
+      event.location || 'Lugar reservado por el cliente',
     date: event.start?.dateTime || event.start?.date || ''
   })) as Event[]
 }

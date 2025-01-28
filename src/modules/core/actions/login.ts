@@ -11,7 +11,6 @@ export async function signout() {
   const { error } = await supabase.auth.signOut()
 
   if (error) {
-    console.log(error)
     redirect('/error')
   }
 
@@ -21,15 +20,15 @@ export async function signout() {
 
 export async function signInWithGoogle() {
   const supabase = await createClientServer()
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: `${env.NEXT_PUBLIC_DOMAIN}/auth/callback`
-    }
-  })
+  const { data, error } =
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${env.NEXT_PUBLIC_DOMAIN}/auth/callback`
+      }
+    })
 
   if (error || !data.url) {
-    console.log(error)
     redirect('/error')
   }
 
