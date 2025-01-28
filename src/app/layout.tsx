@@ -5,6 +5,13 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Tamakún y sus muchachos',
+  icons: [
+    {
+      url: '/logo.webp',
+      rel: 'icon',
+      type: 'image/webp'
+    }
+  ],
   description:
     'Web oficial de la agrupación Tamakún y sus muchachos. Somos una agrupación de música tropical, carranga, tecnomerengue y cumbia de Chinácota, Norte de Santader, Colombia.',
   keywords: [
