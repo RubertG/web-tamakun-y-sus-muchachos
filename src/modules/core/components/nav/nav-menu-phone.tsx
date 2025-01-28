@@ -45,12 +45,7 @@ const itemVariants: Variants = {
   }
 }
 
-const NavMenuMobile = ({
-  items,
-  open,
-  onClose,
-  lastContent
-}: Props) => {
+const NavMenuMobile = ({ items, open, onClose, lastContent }: Props) => {
   const pathName = usePathname()
 
   return (
@@ -67,17 +62,8 @@ const NavMenuMobile = ({
             const isActive = pathName === item.path
 
             return (
-              <m.li
-                key={item.path}
-                className="w-fit"
-                onClick={onClose}
-                variants={itemVariants}
-              >
-                <NavItem
-                  label={item.label}
-                  path={item.path}
-                  isActive={isActive}
-                />
+              <m.li key={item.path} className="w-fit" onClick={onClose} variants={itemVariants}>
+                <NavItem label={item.label} path={item.path} isActive={isActive} />
               </m.li>
             )
           })}

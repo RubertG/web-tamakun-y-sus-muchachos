@@ -5,10 +5,7 @@ interface Props {
   className?: string
 }
 
-const EventCard = ({
-  event: { date, description, title },
-  className
-}: Props) => {
+const EventCard = ({ event: { date, description, title }, className }: Props) => {
   const eventDate = new Date(date)
   const day = eventDate.getDate()
   const monthAndYear =
@@ -19,9 +16,7 @@ const EventCard = ({
     eventDate.getFullYear()
 
   return (
-    <article
-      className={`flex h-fit w-fit items-center gap-3 md:gap-6 ${className}`}
-    >
+    <article className={`flex h-fit w-fit items-center gap-3 md:gap-6 ${className}`}>
       <div className="w-[95px] text-center">
         <p className="text-gradient-primary -mt-[16px] h-[70px] text-[60px] font-bold md:-mt-[25px] md:h-[90px] md:text-[80px]">
           {day}

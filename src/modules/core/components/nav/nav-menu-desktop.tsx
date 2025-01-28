@@ -21,20 +21,14 @@ const NavMenuDesktop = ({ items, lastContent }: Props) => {
 
           return (
             <li key={item.path}>
-              <NavItem
-                label={item.label}
-                path={item.path}
-                isActive={isActive}
-              />
+              <NavItem label={item.label} path={item.path} isActive={isActive} />
             </li>
           )
         })}
       </ul>
 
       {lastContent && (
-        <div className="md: hidden md:flex md:basis-full md:justify-end">
-          {lastContent}
-        </div>
+        <div className="md: hidden md:flex md:basis-full md:justify-end">{lastContent}</div>
       )}
     </>
   )

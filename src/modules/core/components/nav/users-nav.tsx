@@ -28,12 +28,7 @@ const UsersNav = () => {
   return (
     <Nav
       items={NavItems}
-      lastComponentInMobile={
-        <LastComponentInMobile
-          path="/contacto"
-          label="Contacto"
-        />
-      }
+      lastComponentInMobile={<LastComponentInMobile path="/contacto" label="Contacto" />}
       lastComponentInDesktop={
         <Link href="/contacto">
           <Button variant="secondary">Contáctanos</Button>

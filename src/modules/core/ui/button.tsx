@@ -1,9 +1,6 @@
 'use client'
 
-import {
-  cva,
-  type VariantProps
-} from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import clsx from 'clsx'
 
 const buttonVariants = cva(
@@ -34,16 +31,8 @@ export interface Props
   asChild?: boolean
 }
 
-const Button = ({
-  children,
-  className,
-  variant,
-  size,
-  ...props
-}: Props) => {
-  const classNames =
-    buttonVariants({ variant, size }) +
-    (className ? ` ${className}` : '')
+const Button = ({ children, className, variant, size, ...props }: Props) => {
+  const classNames = buttonVariants({ variant, size }) + (className ? ` ${className}` : '')
 
   if (variant === 'secondary' || variant === 'ghost') {
     return (
@@ -52,10 +41,8 @@ const Button = ({
           className={clsx(
             'absolute -left-[1px] -top-[1px] -z-10 inline-block h-[calc(100%+2px)] w-[calc(100%+2px)] rounded-[10px] border-solid transition-all',
             {
-              'bg-gradient-primary group-hover:shadow-button-secondary':
-                variant === 'secondary',
-              'bg-gradient-primary opacity-0 group-hover:opacity-100':
-                variant === 'ghost'
+              'bg-gradient-primary group-hover:shadow-button-secondary': variant === 'secondary',
+              'bg-gradient-primary opacity-0 group-hover:opacity-100': variant === 'ghost'
             }
           )}
         />

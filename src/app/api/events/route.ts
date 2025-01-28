@@ -4,12 +4,8 @@ import { getEvents } from '@/modules/core/lib/google-calendar'
 import { EVENTS_LIMIT } from '@/modules/core/utils/const/events'
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET(
-  request: NextRequest
-): Promise<RouteResponse<Event[]>> {
-  const limit =
-    Number(request.nextUrl.searchParams.get('limit')) ||
-    EVENTS_LIMIT
+export async function GET(request: NextRequest): Promise<RouteResponse<Event[]>> {
+  const limit = Number(request.nextUrl.searchParams.get('limit')) || EVENTS_LIMIT
 
   try {
     const events = await getEvents(limit)

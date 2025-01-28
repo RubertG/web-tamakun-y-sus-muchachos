@@ -65,9 +65,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.webp" />
       </head>
-      <body
-        className={`${poppins.className} bg-bg-dark text-text-primary antialiased`}
-      >
+      <body className={`${poppins.className} bg-bg-dark text-text-primary antialiased`}>
         {children}
       </body>
     </html>

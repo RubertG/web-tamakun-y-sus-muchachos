@@ -2,8 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const SocialIcons = () => {
-  const whatsappMessage =
-    'Hola, me gustaría obtener más información de su agrupación musical.'
+  const whatsappMessage = 'Hola, me gustaría obtener más información de su agrupación musical.'
   const whatsappNumber = '3112005489'
 
   return (
@@ -13,13 +12,7 @@ const SocialIcons = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image
-          src="/assets/whatsapp.svg"
-          width={50}
-          height={50}
-          quality={100}
-          alt="WhatsApp"
-        />
+        <Image src="/assets/whatsapp.svg" width={50} height={50} quality={100} alt="WhatsApp" />
       </Link>
 
       <Link
@@ -37,18 +30,8 @@ const SocialIcons = () => {
         />
       </Link>
 
-      <Link
-        href="https://www.tiktok.com/@tamakun.music"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src="/assets/tiktok.svg"
-          width={50}
-          height={50}
-          quality={100}
-          alt="WhatsApp"
-        />
+      <Link href="https://www.tiktok.com/@tamakun.music" target="_blank" rel="noopener noreferrer">
+        <Image src="/assets/tiktok.svg" width={50} height={50} quality={100} alt="WhatsApp" />
       </Link>
 
       <Link
@@ -56,13 +39,7 @@ const SocialIcons = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image
-          src="/assets/facebook.svg"
-          width={50}
-          height={50}
-          quality={100}
-          alt="WhatsApp"
-        />
+        <Image src="/assets/facebook.svg" width={50} height={50} quality={100} alt="WhatsApp" />
       </Link>
     </section>
   )

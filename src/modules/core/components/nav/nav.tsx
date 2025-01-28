@@ -19,12 +19,7 @@ interface Props {
   lastComponentInDesktop?: React.ReactNode
 }
 
-const Nav = ({
-  items,
-  className,
-  lastComponentInDesktop,
-  lastComponentInMobile
-}: Props) => {
+const Nav = ({ items, className, lastComponentInDesktop, lastComponentInMobile }: Props) => {
   const [open, setOpen] = useState(false)
 
   useDisableScroll(open)
@@ -77,10 +72,7 @@ const Nav = ({
           lastContent={lastComponentInMobile}
         />
 
-        <NavMenuDesktop
-          items={items}
-          lastContent={lastComponentInDesktop}
-        />
+        <NavMenuDesktop items={items} lastContent={lastComponentInDesktop} />
       </nav>
     </LazyMotion>
   )

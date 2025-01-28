@@ -9,9 +9,7 @@ export interface Response<T = unknown> {
   error?: PostgrestError | undefined | unknown
 }
 
-export type RouteResponse<T = unknown> = NextResponse<
-  Response<T>
->
+export type RouteResponse<T = unknown> = NextResponse<Response<T>>
 
 export interface CommentResponse extends Comment {
   user_name: string

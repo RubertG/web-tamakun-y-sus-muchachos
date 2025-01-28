@@ -1,7 +1,4 @@
-import {
-  CommentResponse,
-  RouteResponse
-} from '@/modules/core/interfaces/api/api'
+import { CommentResponse, RouteResponse } from '@/modules/core/interfaces/api/api'
 import { CommentInsert } from '@/modules/core/interfaces/db/db'
 import { CommentInsertSchema } from '@/modules/core/schemas/api/comment'
 import { COMMENTS_SIZE } from '@/modules/core/utils/const/comments'
@@ -24,25 +21,16 @@ import { type NextRequest, NextResponse } from 'next/server'
   - 400: Invalid query parameters.
   - 500: Failed to retrieve comments from the database.
 */
-export async function GET(
-  request: NextRequest
-): Promise<RouteResponse<CommentResponse[]>> {
+export async function GET(request: NextRequest): Promise<RouteResponse<CommentResponse[]>> {
   // Get query params
   let start: number, end: number
   let areActives: boolean | null
 
   try {
-    start =
-      Number(request.nextUrl.searchParams.get('start')) || 0
-    end =
-      Number(request.nextUrl.searchParams.get('end')) ||
-      COMMENTS_SIZE
-    const areActivesParam =
-      request.nextUrl.searchParams.get('areActives')
-    areActives =
-      areActivesParam === null
-        ? null
-        : areActivesParam === 'true'
+    start = Number(request.nextUrl.searchParams.get('start')) || 0
+    end = Number(request.nextUrl.searchParams.get('end')) || COMMENTS_SIZE
+    const areActivesParam = request.nextUrl.searchParams.get('areActives')
+    areActives = areActivesParam === null ? null : areActivesParam === 'true'
   } catch (error) {
     return NextResponse.json(
       {
@@ -90,22 +78,13 @@ export async function GET(
 
   const comments = await Promise.all(
     data.map(async (comment) => {
-      const { data, error } = await supabase
-        .from('users')
-        .select('*')
-        .eq('id', comment.user_id)
+      const { data, error } = await supabase.from('users').select('*').eq('id', comment.user_id)
       const user = data?.[0]
 
       return {
         ...comment,
-        user_name:
-          user?.name && !error
-            ? user.name
-            : 'Usuario desconocido',
-        profile_picture:
-          user?.profile_picture && !error
-            ? user.profile_picture
-            : ''
+        user_name: user?.name && !error ? user.name : 'Usuario desconocido',
+        profile_picture: user?.profile_picture && !error ? user.profile_picture : ''
       }
     })
   )
@@ -125,14 +104,11 @@ export async function GET(
   @param {} req - The incoming Next.js request object.
   @returns A promise that resolves to a RouteResponse object.
 */
-export async function POST(
-  req: NextRequest
-): Promise<RouteResponse> {
+export async function POST(req: NextRequest): Promise<RouteResponse> {
   const commentReq = (await req.json()) as CommentInsert
 
   // Validate comment
-  const parseResult =
-    CommentInsertSchema.safeParse(commentReq)
+  const parseResult = CommentInsertSchema.safeParse(commentReq)
 
   if (!parseResult.success) {
     return NextResponse.json(
@@ -146,15 +122,11 @@ export async function POST(
 
   const supabase = await createClientServer()
 
-  const { status, error } = await supabase
-    .from('comments')
-    .upsert(commentReq)
+  const { status, error } = await supabase.from('comments').upsert(commentReq)
 
   return NextResponse.json(
     {
-      message: error
-        ? 'No se pudo insertar el comentario'
-        : 'Comentario agregado con éxito',
+      message: error ? 'No se pudo insertar el comentario' : 'Comentario agregado con éxito',
       error
     },
     { status }

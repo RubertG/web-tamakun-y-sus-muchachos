@@ -1,7 +1,4 @@
-import {
-  CommentInsert,
-  UserInsert
-} from '@/modules/core/interfaces/db/db'
+import { CommentInsert, UserInsert } from '@/modules/core/interfaces/db/db'
 import { createClientServer } from '@/modules/core/utils/supabase/create-client-server'
 import { NextResponse } from 'next/server'
 
@@ -67,15 +64,13 @@ const fakeComments: CommentInsert[] = [
   },
   {
     id: '00858aa0-3dbc-4c6a-a440-79d7ade433c4',
-    comment:
-      'Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.',
+    comment: 'Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.',
     user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e4',
     approved: false
   },
   {
     id: '00858aa0-3dbc-4c6a-a440-79d7ade433c5',
-    comment:
-      'Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo.',
+    comment: 'Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo.',
     user_id: '00858aa0-3dbc-4c6a-a440-79d7ade433e5',
     approved: false
   },
@@ -93,15 +88,12 @@ export async function GET() {
   const supabase = await createClientServer()
 
   // Insert new user rows into the database table
-  const { error: insertError } = await supabase
-    .from('users')
-    .insert(fakeUsers)
+  const { error: insertError } = await supabase.from('users').insert(fakeUsers)
 
   if (insertError) {
     return NextResponse.json(
       {
-        message:
-          'Ocurrió un error al insertar las filas de la tabla User',
+        message: 'Ocurrió un error al insertar las filas de la tabla User',
         error: insertError
       },
       { status: 500 }
@@ -109,15 +101,12 @@ export async function GET() {
   }
 
   // Insert new comment rows into the database table]
-  const { error: insertCommentError } = await supabase
-    .from('comments')
-    .insert(fakeComments)
+  const { error: insertCommentError } = await supabase.from('comments').insert(fakeComments)
 
   if (insertCommentError) {
     return NextResponse.json(
       {
-        message:
-          'Ocurrió un error al insertar las filas de la tabla Comment',
+        message: 'Ocurrió un error al insertar las filas de la tabla Comment',
         error: insertCommentError
       },
       { status: 500 }

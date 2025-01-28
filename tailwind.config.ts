@@ -12,14 +12,11 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-primary':
-          'linear-gradient(100.654deg, #E50101 20%, #1C53F9 80%);',
-        'gradient-text':
-          'linear-gradient(97.176deg, #E90303 50%, #1C53F9 70%);'
+        'gradient-primary': 'linear-gradient(100.654deg, #E50101 20%, #1C53F9 80%);',
+        'gradient-text': 'linear-gradient(97.176deg, #E90303 50%, #1C53F9 70%);'
       },
       boxShadow: {
-        'button-secondary':
-          '-5px 0px 15px rgb(229, 1, 1, 0.8), 5px 0px 15px rgb(21, 68, 208, 1)'
+        'button-secondary': '-5px 0px 15px rgb(229, 1, 1, 0.8), 5px 0px 15px rgb(21, 68, 208, 1)'
       },
       colors: {
         'primary-50': '#ff5552',
@@ -89,8 +86,7 @@ export default {
             transform: 'translateX(0)'
           },
           to: {
-            transform:
-              'translateX(calc(-100% - var(--gap)))'
+            transform: 'translateX(calc(-100% - var(--gap)))'
           }
         },
         'marquee-vertical': {
@@ -98,15 +94,13 @@ export default {
             transform: 'translateY(0)'
           },
           to: {
-            transform:
-              'translateY(calc(-100% - var(--gap)))'
+            transform: 'translateY(calc(-100% - var(--gap)))'
           }
         }
       },
       animation: {
         marquee: 'marquee var(--duration) infinite linear',
-        'marquee-vertical':
-          'marquee-vertical var(--duration) linear infinite'
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
       }
     }
   },
