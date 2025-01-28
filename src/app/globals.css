@@ -13,3 +13,9 @@ html, body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.container {
+  @apply mx-auto;
+  @apply px-3;
+  max-width: 1200px;
+}
