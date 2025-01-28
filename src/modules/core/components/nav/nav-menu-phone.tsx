@@ -69,6 +69,7 @@ const NavMenuMobile = ({
             return (
               <m.li
                 key={item.path}
+                className="w-fit"
                 onClick={onClose}
                 variants={itemVariants}
               >

@@ -37,7 +37,7 @@ const Nav = ({
     <LazyMotion features={domAnimation}>
       <nav
         className={clsx(
-          'fixed left-0 top-0 w-full md:flex md:items-center md:justify-between md:bg-bg-dark/50 md:px-8 md:py-3 md:backdrop-blur-[6px]',
+          'fixed left-0 top-0 z-50 w-full md:flex md:items-center md:justify-between md:bg-bg-dark/50 md:px-8 md:py-3 md:backdrop-blur-[6px]',
           className
         )}
       >
