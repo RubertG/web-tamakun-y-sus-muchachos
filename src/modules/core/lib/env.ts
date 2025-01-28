@@ -5,7 +5,8 @@ const envSchema = z.object({
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string(),
   GOOGLE_API_KEY: z.string(),
   GOOGLE_CALENDAR_ID: z.string(),
-  NEXT_PUBLIC_DOMAIN: z.string().url()
+  NEXT_PUBLIC_DOMAIN: z.string().url(),
+  SECRET_KEY: z.string()
 })
 
 const parsedEnv = envSchema.safeParse(process.env)
