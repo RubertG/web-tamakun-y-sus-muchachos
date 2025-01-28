@@ -29,7 +29,8 @@ const NavItem = ({
         className={clsx(
           'capitalize md:rounded-[10px] md:px-[14px] md:py-[9px] md:transition-colors md:duration-200 md:group-hover:bg-bg-dark md:group-hover:text-primary-200 md:group-hover:duration-100',
           {
-            'text-primary-200': isActive,
+            'text-gradient-primary text-gradient-primary-off':
+              isActive,
             'text-text-secondary': !isActive
           }
         )}

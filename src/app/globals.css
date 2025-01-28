@@ -14,7 +14,15 @@ html, body {
   -webkit-text-fill-color: transparent;
 }
 
-.container {
+@media (min-width: 768px) {
+  .text-gradient-primary-off {
+    @apply text-primary-200;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+.custom-container {
   @apply mx-auto;
   @apply px-3;
   max-width: 1200px;
