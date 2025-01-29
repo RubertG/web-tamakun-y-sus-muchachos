@@ -11,5 +11,14 @@ export const apiRoutes = {
 
       return `${env.NEXT_PUBLIC_DOMAIN}/api/comments?${urlSearchParams}`
     }
+  },
+  events: {
+    allEvents: (limit?: number) => {
+      const urlSearchParams = new URLSearchParams({
+        ...(limit !== undefined && { limit: limit.toString() })
+      }).toString()
+
+      return `${env.NEXT_PUBLIC_DOMAIN}/api/events?${urlSearchParams}`
+    }
   }
 }
