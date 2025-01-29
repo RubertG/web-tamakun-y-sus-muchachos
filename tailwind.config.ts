@@ -24,7 +24,7 @@ export default {
         'primary-200': '#e50101',
         'primary-300': '#c3140f',
         'bg-dark': '#060606',
-        'bg-muted': '#0B0909',
+        'bg-muted': '#0f0c0c',
         'bg-accent': '#302f32',
         'accent-100': '#1c53f9',
         'accent-200': '#1544d0',
