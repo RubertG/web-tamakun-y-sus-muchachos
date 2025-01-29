@@ -1,6 +1,6 @@
 import { CommentResponse, Response } from '@/modules/core/interfaces/api/api'
 import { env } from '@/modules/core/lib/env'
-import { apiRoutes } from '@/modules/core/utils/api/apiRoutes'
+import { apiRoutes } from '@/modules/core/utils/api/api-routes'
 
 export const getComments = async (
   start?: number,
