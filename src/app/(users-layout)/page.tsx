@@ -1,3 +1,4 @@
+import { Loader } from '@/modules/core/ui/loader'
 import { Comments } from '@/modules/home/components/comments/comments'
 import { CommentsContainer } from '@/modules/home/components/comments/comments-container'
 import { CommentsHeader } from '@/modules/home/components/comments/comments-header'
@@ -12,7 +13,13 @@ export default function Home() {
       <CommentsContainer>
         <CommentsHeader />
 
-        <Suspense fallback={<div className="h-52" />}>
+        <Suspense
+          fallback={
+            <div className="grid h-52 place-content-center">
+              <Loader />
+            </div>
+          }
+        >
           <Comments className="mt-5" />
         </Suspense>
       </CommentsContainer>
