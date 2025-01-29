@@ -4,7 +4,7 @@ const decorationVariants = cva('-z-10 aspect-square rounded-full', {
   variants: {
     variant: {
       primary: 'h-[250px] blur-[200px] lg:h-[350px] lg:blur-[270px] bg-primary-100',
-      secondary: 'h-[250px] blur-[200px] lg:h-[350px] lg:blur-[270px] bg-accent-100'
+      secondary: 'h-[250px] blur-[200px] lg:h-[350px] lg:blur-[270px] bg-accent-100/80'
     }
   },
   defaultVariants: {

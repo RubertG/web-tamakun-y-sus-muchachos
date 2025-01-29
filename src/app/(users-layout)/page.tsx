@@ -1,28 +1,15 @@
-import { Loader } from '@/modules/core/ui/loader'
-import { Comments } from '@/modules/home/components/comments/comments'
-import { CommentsContainer } from '@/modules/home/components/comments/comments-container'
-import { CommentsHeader } from '@/modules/home/components/comments/comments-header'
+import { CommentsSection } from '@/modules/home/components/comments/comments-section'
+import { EventsSection } from '@/modules/home/components/events/events-section'
 import { Header } from '@/modules/home/components/header/header'
-import { Suspense } from 'react'
 
 export default function Home() {
   return (
     <>
       <Header className="mb-28 mt-40 md:mb-0 md:mt-14" />
 
-      <CommentsContainer>
-        <CommentsHeader />
+      <CommentsSection />
 
-        <Suspense
-          fallback={
-            <div className="grid h-52 place-content-center">
-              <Loader />
-            </div>
-          }
-        >
-          <Comments className="mt-5" />
-        </Suspense>
-      </CommentsContainer>
+      <EventsSection className="mb-36 mt-24 px-3" />
     </>
   )
 }
