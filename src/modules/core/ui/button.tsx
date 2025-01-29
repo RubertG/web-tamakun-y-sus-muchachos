@@ -32,11 +32,11 @@ export interface Props
 }
 
 const Button = ({ children, className, variant, size, ...props }: Props) => {
-  const classNames = buttonVariants({ variant, size }) + (className ? ` ${className}` : '')
-
   if (variant === 'secondary' || variant === 'ghost') {
+    const classNames = buttonVariants({ variant, size }) + (className ? ` ${className}` : '')
+
     return (
-      <div className="group relative z-10 h-fit w-fit">
+      <div className={`group relative z-10 ${className}`}>
         <div
           className={clsx(
             'absolute -left-[1px] -top-[1px] -z-10 inline-block h-[calc(100%+2px)] w-[calc(100%+2px)] rounded-[10px] border-solid transition-all duration-300',
@@ -52,6 +52,8 @@ const Button = ({ children, className, variant, size, ...props }: Props) => {
       </div>
     )
   }
+
+  const classNames = buttonVariants({ variant, size }) + (className ? ` ${className}` : '')
 
   return (
     <button className={classNames} {...props}>
