@@ -5,7 +5,7 @@ interface Props {
 const CommentsHeader = ({ className }: Props) => {
   return (
     <header className={className}>
-      <p className="px-3 text-center text-sm font-medium text-text-secondary md:text-base">
+      <p className="px-3 text-center text-sm text-text-secondary md:text-base">
         Muchos de nuestros clientes y fans que{' '}
         <span className="text-text-primary">confían en nosotros</span> dejaron su comentario.
       </p>
