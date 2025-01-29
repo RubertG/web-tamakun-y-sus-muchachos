@@ -11,7 +11,8 @@ export const getComments = async (
     const response = await fetch(apiRoutes.comments.allComments(start, end, areActives), {
       headers: {
         authorization: env.SECRET_KEY
-      }
+      },
+      cache: 'no-cache'
     })
     const data = await response.json()
 
