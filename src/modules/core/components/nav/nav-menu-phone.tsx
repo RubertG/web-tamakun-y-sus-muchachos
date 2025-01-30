@@ -52,7 +52,7 @@ const NavMenuMobile = ({ items, open, onClose, lastContent }: Props) => {
     <AnimatePresence>
       {open && (
         <m.ul
-          className="left-0 top-0 flex h-[calc(100dvh-76px)] w-full flex-col justify-end -space-y-2.5 bg-bg-dark/80 px-3 pb-10 backdrop-blur-[6px] md:hidden"
+          className="absolute left-0 top-0 -z-10 flex h-dvh w-full flex-col justify-end -space-y-2.5 bg-bg-dark/80 px-3 pb-10 backdrop-blur-[6px] md:hidden"
           initial="closed"
           animate="open"
           exit="closed"

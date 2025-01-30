@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { LazyMotion, domAnimation } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useDisableScroll } from '../../hooks/use-disable'
 import { NavLinkType } from '../../interfaces/nav/nav'
@@ -21,6 +21,23 @@ interface Props {
 
 const Nav = ({ items, className, lastComponentInDesktop, lastComponentInMobile }: Props) => {
   const [open, setOpen] = useState(false)
+  const [isWindowTop, setIsWindowTop] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsWindowTop(false)
+      } else {
+        setIsWindowTop(true)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   useDisableScroll(open)
 
@@ -32,16 +49,19 @@ const Nav = ({ items, className, lastComponentInDesktop, lastComponentInMobile }
     <LazyMotion features={domAnimation}>
       <nav
         className={clsx(
-          'fixed left-0 top-0 z-50 w-full md:flex md:items-center md:justify-between md:bg-bg-dark/50 md:px-8 md:py-3 md:backdrop-blur-[6px]',
-          className
+          'fixed left-0 top-0 z-50 w-full transition-all duration-300 md:flex md:items-center md:justify-between md:px-8 md:py-3 md:backdrop-blur-[6px]',
+          className,
+          {
+            'bg-bg-dark/80 md:bg-bg-dark/50': !isWindowTop,
+            'md:hover:bg-bg-dark/80': isWindowTop
+          }
         )}
       >
         <div
           className={clsx(
             'z-10 flex items-center justify-between px-3 py-3 backdrop-blur-[6px] transition-all duration-300 md:basis-full md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-none',
             {
-              'bg-bg-dark/50': !open,
-              'bg-bg-dark/80': open
+              'bg-bg-dark/50': !isWindowTop
             }
           )}
         >
