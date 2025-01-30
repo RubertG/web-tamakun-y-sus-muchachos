@@ -1,12 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const SocialIcons = () => {
+interface Props {
+  className?: string
+}
+
+const SocialIcons = ({ className }: Props) => {
   const whatsappMessage = 'Hola, me gustaría obtener más información de su agrupación musical.'
   const whatsappNumber = '3112005489'
 
   return (
-    <section className="flex items-center justify-center gap-3.5 [&_img:hover]:scale-125 [&_img]:size-8 [&_img]:transition-transform">
+    <section
+      className={`flex items-center justify-center gap-3.5 [&_img:hover]:scale-125 [&_img]:size-8 [&_img]:transition-transform ${className}`}
+    >
       <Link
         href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
         target="_blank"
