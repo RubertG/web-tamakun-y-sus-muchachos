@@ -4,9 +4,10 @@ import clsx from 'clsx'
 import { LazyMotion, domAnimation } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import { useDisableScroll } from '../../hooks/use-disable'
+import { useDisableScroll } from '../../hooks/document/use-disable'
+import { useWindowTop } from '../../hooks/document/use-window-top'
 import { NavLinkType } from '../../interfaces/nav/nav'
 import MenuIcon from './menu-icon'
 import { NavMenuDesktop } from './nav-menu-desktop'
@@ -21,23 +22,7 @@ interface Props {
 
 const Nav = ({ items, className, lastComponentInDesktop, lastComponentInMobile }: Props) => {
   const [open, setOpen] = useState(false)
-  const [isWindowTop, setIsWindowTop] = useState(true)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsWindowTop(false)
-      } else {
-        setIsWindowTop(true)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+  const { isWindowTop } = useWindowTop()
 
   useDisableScroll(open)
 
