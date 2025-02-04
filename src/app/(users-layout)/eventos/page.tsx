@@ -8,9 +8,16 @@ import { Suspense } from 'react'
 export default function EventPage() {
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center px-3 py-24">
-      <h1 className="px-3 text-center text-4xl font-bold md:text-6xl">Próximas fechas</h1>
+      <h1 className="animation-entry px-3 text-center text-4xl font-bold md:text-6xl">
+        Próximas fechas
+      </h1>
 
-      <section className="mx-auto max-w-md">
+      <section
+        className="animation-entry mx-auto max-w-md"
+        style={{
+          animationDelay: '0.15s'
+        }}
+      >
         <Suspense
           fallback={
             <ul className="mt-12 space-y-6">
