@@ -3,10 +3,11 @@ import { EventCard } from '@/modules/events/components/event-card'
 
 interface Props {
   className?: string
+  limit?: number
 }
 
-const Events = async ({ className }: Props) => {
-  const { data } = await getEvents(4)
+const Events = async ({ className, limit = 4 }: Props) => {
+  const { data } = await getEvents(limit)
 
   return (
     <ul className={`${className} space-y-6`}>
