@@ -50,7 +50,7 @@ const Nav = ({ items, className, lastComponentInDesktop, lastComponentInMobile }
             }
           )}
         >
-          <Link href="/" onClick={handleOpen}>
+          <Link href="/" onClick={() => setOpen(false)}>
             <Image
               className="h-[52px] w-[100px]"
               src="/assets/name-logo.webp"
