@@ -6,12 +6,11 @@ import { redirect } from 'next/navigation'
 export default async function LoginPage() {
   const supabase = await createClientServer()
   const {
-    data: { user },
-    error
+    data: { user }
   } = await supabase.auth.getUser()
 
-  if (error) {
-    redirect('/error')
+  if (user) {
+    redirect('/')
   }
 
   return (
