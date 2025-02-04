@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 
 export default function EventPage() {
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center px-3 py-24">
+    <div className="min-h-[calc(100vh-44px)] px-3 pb-16 pt-24 md:flex md:flex-col md:items-center md:justify-center">
       <h1 className="animation-entry px-3 text-center text-4xl font-bold md:text-6xl">
         Próximas fechas
       </h1>
@@ -31,7 +31,7 @@ export default function EventPage() {
         </Suspense>
 
         <Link href="/contacto" className="mt-9 block">
-          <Button className="w-full" variant="secondary">
+          <Button className="w-full" variant="secondary" size="small">
             ¡Contáctanos!
           </Button>
         </Link>

@@ -9,7 +9,7 @@ export default function Home() {
 
       <CommentsSection />
 
-      <EventsSection className="mb-36 mt-24 px-3" />
+      <EventsSection className="mb-28 mt-24 px-3 md:mb-36" />
     </>
   )
 }
