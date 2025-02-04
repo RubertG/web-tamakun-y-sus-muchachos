@@ -2,21 +2,26 @@ import { CommentResponse, Response } from '@/modules/core/interfaces/api/api'
 import { env } from '@/modules/core/lib/env'
 import { apiRoutes } from '@/modules/core/utils/api/api-routes'
 
-export const getComments = async (
-  start?: number,
-  end?: number,
+interface Params {
+  start?: number
+  end?: number
   areActives?: boolean
-): Promise<Response<CommentResponse[]>> => {
+}
+
+export const getComments = async (params?: Params): Promise<Response<CommentResponse[]>> => {
   try {
-    const response = await fetch(apiRoutes.comments.allComments(start, end, areActives), {
-      headers: {
-        authorization: env.SECRET_KEY
-      },
-      cache: 'force-cache',
-      next: {
-        revalidate: 60
+    const response = await fetch(
+      apiRoutes.comments.allComments(params?.start, params?.end, params?.areActives),
+      {
+        headers: {
+          authorization: env.SECRET_KEY
+        },
+        cache: 'force-cache',
+        next: {
+          revalidate: 60
+        }
       }
-    })
+    )
     const data = await response.json()
 
     return data

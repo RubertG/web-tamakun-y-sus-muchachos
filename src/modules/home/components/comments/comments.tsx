@@ -5,14 +5,15 @@ import { getComments } from '../../../core/services/comments'
 
 interface Props {
   className?: string
+  areActives?: boolean
 }
 
-const Comments = async ({ className }: Props) => {
-  const { data } = await getComments()
+const Comments = async ({ className, areActives = true }: Props) => {
+  const { data } = await getComments({ areActives })
 
   return (
     <>
-      <Marquee className={`[--duration:90s] ${className}`} pauseOnHover>
+      <Marquee className={`[--duration:40s] ${className}`} pauseOnHover>
         {data?.map((comment) => <Comment key={comment.id} comment={comment} />)}
       </Marquee>
     </>
