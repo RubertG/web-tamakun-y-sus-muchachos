@@ -12,7 +12,10 @@ export const getComments = async (
       headers: {
         authorization: env.SECRET_KEY
       },
-      cache: 'no-cache'
+      cache: 'force-cache',
+      next: {
+        revalidate: 60
+      }
     })
     const data = await response.json()
 
