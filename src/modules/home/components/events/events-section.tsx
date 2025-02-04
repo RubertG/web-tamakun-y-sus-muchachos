@@ -28,7 +28,7 @@ const EventsSection = ({ className }: Props) => {
         </Suspense>
 
         <Link href="/contacto" className="block">
-          <Button className="w-full" variant="secondary">
+          <Button className="w-full" variant="secondary" size="small">
             ¡Contáctanos!
           </Button>
         </Link>
