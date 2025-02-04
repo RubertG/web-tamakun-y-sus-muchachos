@@ -16,7 +16,11 @@ const Footer = ({ className }: Props) => {
 
       <p className="text-center text-sm text-gray-500">
         Diseñado y desarrollado por{' '}
-        <Link href="/contacto" className="font-bold hover:underline">
+        <Link
+          href="https://web-minds-col.com"
+          target="_blank"
+          className="font-bold hover:underline"
+        >
           WebMinds Colombia
         </Link>
       </p>
