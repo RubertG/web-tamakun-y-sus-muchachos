@@ -8,7 +8,7 @@ import { Suspense } from 'react'
 export default function EventPage() {
   return (
     <div className="min-h-[calc(100vh-44px)] px-3 pb-16 pt-24 md:flex md:flex-col md:items-center md:justify-center">
-      <h1 className="animation-entry px-3 text-center text-4xl font-bold md:text-6xl">
+      <h1 className="animation-entry text-center text-4xl font-bold md:text-6xl">
         Próximas fechas
       </h1>
 
