@@ -6,7 +6,8 @@ const envSchema = z.object({
   GOOGLE_API_KEY: z.string(),
   GOOGLE_CALENDAR_ID: z.string(),
   NEXT_PUBLIC_DOMAIN: z.string().url(),
-  SECRET_KEY: z.string()
+  SECRET_KEY: z.string(),
+  NEXT_PUBLIC_MAIL: z.string()
 })
 
 const parsedEnv = envSchema.safeParse(process.env)
