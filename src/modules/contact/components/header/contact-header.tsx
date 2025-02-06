@@ -51,7 +51,7 @@ export const ContactHeader = ({ className }: Props) => {
         </Link>
       </div>
 
-      <footer className="animation-entry mt-5" style={{ animationDelay: '0.45s' }}>
+      <footer className="animation-entry mt-5" style={{ animationDelay: '0.3s' }}>
         <SocialIcons />
       </footer>
     </header>
