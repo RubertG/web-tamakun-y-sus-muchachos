@@ -1,8 +1,9 @@
 import { env } from '@/modules/core/lib/env'
-import { Mail, Phone } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import Link from 'next/link'
 
 import { SocialIcons } from '../social/social-icons'
+import { PhoneNumbersCard } from './phone-numbers-card'
 
 interface Props {
   className?: string
@@ -37,18 +38,7 @@ export const ContactHeader = ({ className }: Props) => {
 
       <div className="animation-entry mt-5 text-center md:mt-9" style={{ animationDelay: '0.3s' }}>
         {phoneNumbers.map(({ number, prefix }) => (
-          <Link
-            key={number}
-            href={`tel:${prefix}${number}`}
-            className="mx-auto mb-2 flex w-fit items-center justify-center gap-1.5 text-3xl font-bold text-text-secondary md:mb-5 md:text-[40px] md:transition-transform md:hover:scale-105"
-            title={`Llamar al ${prefix} ${number}`}
-          >
-            <Phone className="-mt-0.5 w-5 md:hidden" />
-
-            <p>
-              {prefix} <span className="text-gradient-primary">{number}</span>
-            </p>
-          </Link>
+          <PhoneNumbersCard key={number} number={number} prefix={prefix} />
         ))}
 
         <Link
