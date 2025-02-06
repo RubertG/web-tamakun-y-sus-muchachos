@@ -1,4 +1,4 @@
-import { SocialIcons } from '@/modules/contact/components/social-icons'
+import { SocialIcons } from '@/modules/contact/components/social/social-icons'
 import { Button } from '@/modules/core/ui/button'
 import { EventCardSkeleton } from '@/modules/events/components/event-card-skeleton'
 import { Events } from '@/modules/home/components/events/events'

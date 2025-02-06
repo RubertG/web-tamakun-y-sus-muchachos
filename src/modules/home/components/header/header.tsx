@@ -1,4 +1,4 @@
-import { SocialIcons } from '@/modules/contact/components/social-icons'
+import { SocialIcons } from '@/modules/contact/components/social/social-icons'
 import { Button } from '@/modules/core/ui/button'
 import Link from 'next/link'
 

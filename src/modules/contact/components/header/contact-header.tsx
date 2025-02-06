@@ -2,7 +2,7 @@ import { env } from '@/modules/core/lib/env'
 import { Mail, Phone } from 'lucide-react'
 import Link from 'next/link'
 
-import { SocialIcons } from './social-icons'
+import { SocialIcons } from '../social/social-icons'
 
 interface Props {
   className?: string
