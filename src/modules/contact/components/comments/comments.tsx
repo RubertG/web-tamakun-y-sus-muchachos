@@ -16,7 +16,7 @@ const Comments = async ({ className }: Props) => {
         <Comment
           key={comment.id}
           comment={comment}
-          className="mx-auto bg-bg-dark/20 backdrop-blur-md hover:bg-bg-dark"
+          className="mx-auto !bg-bg-dark/20 !backdrop-blur-md hover:!bg-bg-dark"
         />
       ))}
     </ul>
