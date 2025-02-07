@@ -8,6 +8,7 @@ import { Button } from '../../ui/button'
 function LogoutButton() {
   return (
     <Button
+      type="button"
       variant="transparent"
       className="w-full"
       size="small"

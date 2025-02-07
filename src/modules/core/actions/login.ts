@@ -8,14 +8,9 @@ import { createClientServer } from '../utils/supabase/create-client-server'
 
 export async function signout() {
   const supabase = await createClientServer()
-  const { error } = await supabase.auth.signOut()
-
-  if (error) {
-    redirect('/error')
-  }
+  await supabase.auth.signOut()
 
   revalidatePath('/dejar-comentario')
-  redirect('/')
 }
 
 export async function signInWithGoogle(next?: string) {
