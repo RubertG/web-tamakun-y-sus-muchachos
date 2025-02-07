@@ -10,7 +10,8 @@ export const apiRoutes = {
       }).toString()
 
       return `${env.NEXT_PUBLIC_DOMAIN}/api/comments?${urlSearchParams}`
-    }
+    },
+    saveComment: `${env.NEXT_PUBLIC_DOMAIN}/api/comments`
   },
   events: {
     allEvents: (limit?: number) => {
