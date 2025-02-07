@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 import { saveComment } from '../actions/save-comment'
 
@@ -28,6 +29,8 @@ export const useCommentForm = (userId: string) => {
     setState(data)
 
     if (!data.error) {
+      toast.success('Gracias por dejar tu comentario.')
+
       router.push('/')
     }
   }
