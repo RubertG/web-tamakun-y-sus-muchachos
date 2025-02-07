@@ -10,10 +10,7 @@ export const getEvents = async (limit?: number): Promise<Response<Event[]>> => {
       headers: {
         authorization: env.SECRET_KEY
       },
-      cache: 'force-cache',
-      next: {
-        revalidate: 60
-      }
+      cache: 'no-cache'
     })
     const data = await res.json()
 
