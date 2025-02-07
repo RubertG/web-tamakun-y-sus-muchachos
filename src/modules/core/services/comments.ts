@@ -16,7 +16,10 @@ export const getComments = async (params?: Params): Promise<Response<CommentResp
         headers: {
           authorization: env.SECRET_KEY
         },
-        cache: 'no-cache'
+        cache: 'force-cache',
+        next: {
+          revalidate: 60
+        }
       }
     )
     const data = await response.json()
