@@ -13,7 +13,7 @@ const Comments = async ({ className, areActives = true }: Props) => {
 
   return (
     <>
-      <Marquee className={`[--duration:40s] ${className}`} pauseOnHover>
+      <Marquee className={`[--duration:20s] ${className}`} pauseOnHover>
         {data?.map((comment) => <Comment key={comment.id} comment={comment} />)}
       </Marquee>
     </>
