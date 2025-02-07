@@ -3,18 +3,24 @@
 import React from 'react'
 
 import { signInWithGoogle } from '../../actions/login'
+import { Button } from '../../ui/button'
 
-const SignInWithGoogleButton = () => {
+interface Props {
+  next?: string
+}
+
+const SignInWithGoogleButton = ({ next }: Props) => {
   return (
-    <button
-      type="button"
-      className="rounded-xl bg-slate-950 px-3.5 py-2.5 text-white"
+    <Button
+      variant="secondary"
+      size="small"
+      className="w-full"
       onClick={async () => {
-        signInWithGoogle()
+        signInWithGoogle(next)
       }}
     >
       Ingresar con Google
-    </button>
+    </Button>
   )
 }
 

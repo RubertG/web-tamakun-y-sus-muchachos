@@ -14,16 +14,16 @@ export async function signout() {
     redirect('/error')
   }
 
-  revalidatePath('/login')
-  redirect('/login')
+  revalidatePath('/dejar-comentario')
+  redirect('/')
 }
 
-export async function signInWithGoogle() {
+export async function signInWithGoogle(next?: string) {
   const supabase = await createClientServer()
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `${env.NEXT_PUBLIC_DOMAIN}/auth/callback`
+      redirectTo: `${env.NEXT_PUBLIC_DOMAIN}/auth/callback?next=${next || '/'}`
     }
   })
 
