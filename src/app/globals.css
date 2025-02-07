@@ -109,3 +109,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+textarea {
+	resize: none;
+	field-sizing: content;
+}
