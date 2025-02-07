@@ -9,7 +9,7 @@ import { saveComment } from '../actions/save-comment'
 export const useCommentForm = (userId: string) => {
   const [state, setState] = useState({
     message: '',
-    error: true
+    error: false
   })
   const [loading, setLoading] = useState(false)
   const router = useRouter()
