@@ -1,5 +1,6 @@
 import { poppins } from '@/modules/core/fonts/poppins'
 import { env } from '@/modules/core/lib/env'
+import { Toaster } from '@/modules/core/ui/toaster'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -67,6 +68,7 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.className} bg-bg-dark text-text-primary antialiased`}>
         {children}
+        <Toaster />
       </body>
     </html>
   )
