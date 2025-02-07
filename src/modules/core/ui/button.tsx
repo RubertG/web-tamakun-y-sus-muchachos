@@ -11,7 +11,8 @@ const buttonVariants = cva(
         primary:
           'bg-gradient-primary bg-[length:150%_150%] bg-[position:50%_50%] hover:bg-[position:80%_80%] transition-[background-position] bg-center px-[15px] py-[10px]',
         secondary: 'px-[14px] py-[9px] bg-bg-dark',
-        ghost: 'px-[14px] py-[9px] bg-bg-dark'
+        ghost: 'px-[14px] py-[9px] bg-bg-dark',
+        transparent: 'px-[15px] py-[10px] bg-transparent hover:bg-bg-muted'
       },
       size: {
         normal: 'text-base',
@@ -32,9 +33,9 @@ export interface Props
 }
 
 const Button = ({ children, className, variant, size, ...props }: Props) => {
-  if (variant === 'secondary' || variant === 'ghost') {
-    const classNames = buttonVariants({ variant, size }) + (className ? ` ${className}` : '')
+  const classNames = buttonVariants({ variant, size }) + (className ? ` ${className}` : '')
 
+  if (variant === 'secondary' || variant === 'ghost') {
     return (
       <div className={`group relative z-10 ${className}`}>
         <div
@@ -52,8 +53,6 @@ const Button = ({ children, className, variant, size, ...props }: Props) => {
       </div>
     )
   }
-
-  const classNames = buttonVariants({ variant, size }) + (className ? ` ${className}` : '')
 
   return (
     <button className={classNames} {...props}>
