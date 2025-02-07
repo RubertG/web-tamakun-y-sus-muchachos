@@ -9,4 +9,4 @@ const Form = ({ className, ...props }: Props) => {
   )
 }
 
-export default Form
+export { Form }

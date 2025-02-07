@@ -1,5 +1,5 @@
 import SignInWithGoogleButton from '@/modules/core/components/auth/sign-in-with-google-button'
-import Form from '@/modules/core/components/form/form'
+import { Form } from '@/modules/core/components/form/form'
 
 const LoginForm = () => {
   return (
