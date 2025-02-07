@@ -1,7 +1,7 @@
 'use client'
 
 import { LogoutButton } from '@/modules/core/components/auth/logout-button'
-import Form from '@/modules/core/components/form/form'
+import { Form } from '@/modules/core/components/form/form'
 import { Button } from '@/modules/core/ui/button'
 import { Textarea } from '@/modules/core/ui/textarea'
 
@@ -21,7 +21,7 @@ const CommentForm = ({ userId }: Props) => {
 
         <div className="mt-5 space-y-3 text-sm text-text-secondary">
           <p>
-            Dejanos saber tu opinión sobre nuestra agrupación{' '}
+            Déjanos saber tu opinión sobre nuestra agrupación{' '}
             <strong>Tamakún y sus Muchachos</strong>.
           </p>
           <p>Siempre estamos buscando mejorar y tu opinión es muy importante para nosotros.</p>
