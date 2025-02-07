@@ -5,7 +5,7 @@ import Form from '@/modules/core/components/form/form'
 import { Button } from '@/modules/core/ui/button'
 import { Textarea } from '@/modules/core/ui/textarea'
 
-import { useCommentForm } from '../hooks/useCommentForm'
+import { useCommentForm } from '../hooks/use-comment-form'
 
 interface Props {
   userId: string
